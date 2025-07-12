@@ -1,7 +1,32 @@
 body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
+font-family: 'poppins', sans-serif;
+display: grid;
+margin: 0%;   
+border-image-width: 0%;
+font-size: medium;
+padding: auto;
 }
-h1 {
-    color: darkblue;
+button, link:hover  {
+background-color: rgb(199, 133, 52);
+color: blueviolet;
+}
+header, footer{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+@media (max-with: 600px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+    background-color: darkorange;
+    color: white;
 }
