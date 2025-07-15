@@ -1,0 +1,69 @@
+body {
+font-family: 'poppins', sans-serif;
+display: grid;
+margin: 0%;   
+border-image-width: 0%;
+font-size: medium;
+padding: auto;
+}
+button, link:hover  {
+background-color: rgb(199, 133, 52);
+color: blueviolet;
+}
+header, footer{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+@media (max-with: 600px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+    background-color: darkorange;
+    color: white;
+}
+.navbar {
+    background-color: darkblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    color: white;
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.nar-links li a:hover {
+    color: yellow;
+}
+.nar-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+@media (max-width: 600px) {.nar-links {
+    flex-direction: column;
+    gap: 10px;
+    background-color: darkblue;
+    padding: 10px;
+}
+.navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    }
+}

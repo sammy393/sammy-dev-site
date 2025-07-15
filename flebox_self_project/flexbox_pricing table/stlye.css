@@ -1,0 +1,24 @@
+.card-section {
+ display: flex;
+ justify-content: space-around;
+ align-items: stretch;
+ background-color: goldenrod;
+ padding: 20px;
+}
+.card {
+ flex: 1 1 200px;
+ max-width: 280px;
+ border: 1px solid black;
+ background-color: rgb(160, 41, 41);
+ padding: 20px;
+ text-align: center;
+}
+
+.card h3 {
+ margin-top: 0;
+ color: darkblue ;
+}
+
+.card p {
+ color: wheat;
+}

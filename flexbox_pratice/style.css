@@ -1,0 +1,55 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+header, footer{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background-color: lightgray;
+}
+
+.box {
+    background-color: lightgray;
+    padding: 40px;
+    width: 40px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.box:nth-child(1) {
+    min-height: 100px;
+    flex-shrink: 0;
+}
+
+.box:nth-child(2) {
+    min-height: 200px;
+
+}
+
+.box:nth-child(1)
+{background-color: lightcoral;}
+
+.box:nth-child(2)
+{background-color: lightgreen;}
+
+.box:nth-child(3)
+{background-color: lightseagreen;}
+
+.box:nth-child(4)
+{background-color: lightpink;}
+
+.box:hover {
+ background-color: gold;
+ cursor: pointer;
+}
