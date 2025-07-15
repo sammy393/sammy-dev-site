@@ -1,39 +1,37 @@
 body {
-    font-family: 'poppins', sans-serif;
-    display: grid;
-    margin: 0%;
-    border-image-width: 0%;
-    font-size: medium;
-    padding: auto;
-}
-
-button,
-link:hover {
-    background-color: rgb(199, 133, 52);
-    color: blueviolet;
-}
-
-header,
-footer {
-    background-color: darkblue;
-    color: white;
-    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #fff8dc;
+    color: #333;
     padding: 20px;
+    margin: 0;
+    line-height: 1.6;
 }
 
-@media (max-with: 600px) {
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
+header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: darkblue;
 }
 
-.card {
-    transition: transform 0.3s ease;
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: darkgreen;
+    font-weight: bold;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    background-color: darkorange;
-    color: white;
+.intro {
+    background-color: #f0e68c;
+    padding: 20px;
+    border-left: 5px solid darkblue;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #666;
 }
