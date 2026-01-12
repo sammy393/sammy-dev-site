@@ -1,0 +1,10 @@
+#strength {
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+body.dark {
+    background-color: #111;
+    color: #fff;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 19 Events</title>
+</head>
+
+<body>
+    <h1 id="title">Hello world</h1>
+    <button id="changeBtn">Change Text</button>
+    <button id="colorBtn">Change color</button>
+    <script>
+        //get elements
+        const title = document.getElementById("title");
+        const changeBtn = document.getElementById("changeBtn");
+        const colorBtn = document.getElementById("colorBtn");
+        //event Listener for text change
+        changeBtn.addEventListener("click", function () {
+            title.textContent = "You clicked Change Text";
+        });
+        // event listerner for color change 
+        colorBtn.addEventListener("click", function () {
+            title.style.color = "blue";
+        });
+    </script>
+</body>
+
+</html>

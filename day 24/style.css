@@ -1,0 +1,16 @@
+body {
+    background-color: darkgray;
+    color: greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+clock {
+    font-size: 5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #00ffcc;
+}

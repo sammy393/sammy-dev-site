@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animated To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #222;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00ff99;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        button {
+            background: #00ff99;
+            color: #111;
+            border: none;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #00cc77;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        li {
+            background: #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease, color 0.4s ease, text-decoration-color 0.4s ease;
+        }
+
+        li.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .delete-btn {
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: darkred;
+        }
+
+        /* Slide-out animation */
+        li.removing {
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do App</h1>
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button onclick="addTask()">Add</button>
+        <button onclick="clearAll()">Clear All</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        const taskList = document.getElementById("taskList");
+
+        window.onload = () => {
+            const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            savedTasks.forEach(task => addTaskToDOM(task.text, task.completed));
+        };
+
+        function addTask() {
+            const input = document.getElementById("taskInput");
+            const taskText = input.value.trim();
+            if (taskText === "") return;
+
+            addTaskToDOM(taskText, false);
+            saveTasks();
+            input.value = "";
+        }
+
+        function addTaskToDOM(taskText, completed) {
+            const li = document.createElement("li");
+            li.textContent = taskText;
+            if (completed) li.classList.add("completed");
+
+            li.addEventListener("click", () => {
+                li.classList.toggle("completed");
+                saveTasks();
+            });
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation();
+                li.classList.add("removing");
+                setTimeout(() => {
+                    li.remove();
+                    saveTasks();
+                }, 400);
+            };
+
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+
+            // Animate appearance
+            setTimeout(() => li.classList.add("show"), 10);
+        }
+
+        function clearAll() {
+            document.querySelectorAll("#taskList li").forEach(li => {
+                li.classList.add("removing");
+                setTimeout(() => li.remove(), 400);
+            });
+            localStorage.removeItem("tasks");
+        }
+
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll("#taskList li").forEach(li => {
+                tasks.push({
+                    text: li.firstChild.textContent,
+                    completed: li.classList.contains("completed")
+                });
+            });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    </script>
+</body>
+
+</html>

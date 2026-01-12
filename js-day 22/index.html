@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #scoreboard {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎲 Guess the Number (1–10)</h1>
+    <input type="number" id="userGuess" placeholder="Enter a number" min="1" max="10">
+    <button onclick="checkGuess()">Guess</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <p id="message"></p>
+
+    <div id="scoreboard">
+        Wins: <span id="wins">0</span> |
+        Losses: <span id="losses">0</span> |
+        Games Played: <span id="games">0</span>
+    </div>
+
+    <script>
+        let secretNumber;
+        let attempts;
+        const maxAttempts = 5;
+        let gameOver = false; // NEW flag to lock game after end
+
+        // Score variables
+        let wins = 0;
+        let losses = 0;
+        let games = 0;
+
+        function startGame() {
+            secretNumber = Math.floor(Math.random() * 10) + 1;
+            attempts = 0;
+            gameOver = false;
+            document.getElementById("message").innerText =
+                "Game started! You have " + maxAttempts + " tries.";
+            document.getElementById("userGuess").value = "";
+        }
+
+        function checkGuess() {
+            if (gameOver) {
+                document.getElementById("message").innerText = "⚠️ Game over! Press Reset to start again.";
+                return;
+            }
+
+            let guess = parseInt(document.getElementById("userGuess").value);
+
+            if (!guess || guess < 1 || guess > 10) {
+                document.getElementById("message").innerText = "❌ Please enter a number between 1 and 10.";
+                return;
+            }
+
+            attempts++;
+            let message = "";
+
+            if (guess === secretNumber) {
+                message = "🎉 Correct! The number was " + secretNumber +
+                    ". You guessed it in " + attempts + " tries.";
+                wins++;
+                games++;
+                updateScore();
+                gameOver = true; // lock game
+            } else if (attempts === maxAttempts) {
+                message = "❌ No more tries left! The number was " + secretNumber + ".";
+                losses++;
+                games++;
+                updateScore();
+                gameOver = true; // lock game
+            } else if (guess > secretNumber) {
+                message = "📈 Too high! Attempts left: " + (maxAttempts - attempts);
+            } else if (guess < secretNumber) {
+                message = "📉 Too low! Attempts left: " + (maxAttempts - attempts);
+            }
+
+            document.getElementById("message").innerText = message;
+        }
+
+        function updateScore() {
+            document.getElementById("wins").innerText = wins;
+            document.getElementById("losses").innerText = losses;
+            document.getElementById("games").innerText = games;
+        }
+
+        function resetGame() {
+            startGame();
+        }
+
+        // Start game automatically on page load
+        startGame();
+    </script>
+
+</body>
+
+</html>

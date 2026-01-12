@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 28 - DOM Images & Styles</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        img {
+            width: 200px;
+            margin: 20px 0;
+        }
+
+        .dark-mode {
+            background-color: #111;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">Hello, JavaScript!</h1>
+    <img id="myImage" src="https://via.placeholder.com/200" alt="Placeholder">
+
+    <br>
+    <button onclick="changeImage()">Change Image</button>
+    <button onclick="toggleMode()">Toggle Dark Mode</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

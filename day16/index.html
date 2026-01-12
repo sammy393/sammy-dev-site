@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Day 16 Chanllenge Extended</title>
+</head>
+
+<body>
+    <h2>Fruit List</h2>
+    <ul id="fruitList">
+        <li>Apple</li>
+        <li>Banana</li>
+    </ul>
+    <p id="countMessage">Total fruits:2</p>
+    <input type="text" id="fruitInput" placeholder="Enter a fruit">
+    <button onclick="addFruit()">Add Fruit</button>
+    <button onclick="removeFruit()">Remove Fruit</button>
+
+    <script>
+        function updateCount() {
+            let list = document.getElementId("fruitList");
+            let count = list.getElementTagName("li").length;
+            document.getElementById("countMessage").textContent = "Total fruits:" + count;
+        }
+        function addFruit() {
+            let input = document.getElementById("fruitInput");
+            let fruitName = input.value.trim();
+
+            if (fruitName !== "") {
+                let newFruit = document.creatElement("li");
+                newFruit, textContent = fruitName;
+                document.getElementById("fruitList").appendChild(newFruit);
+                input.value = "",
+                    updateCount();
+            } else {
+                alert("Please type a fruit name!");
+            }
+        }
+        function removeFruit() {
+            let list = document.getElementById("fruitList");
+            if (list.lastChild) {
+                list.lastChild.remove();
+                updateCount();
+            } else {
+                alert("No fruits to remove!");
+            }
+        }
+        //Initialize count on load
+        updateCount();
+    </script>
+</body>
+
+</html>
